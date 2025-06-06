@@ -1,0 +1,18 @@
+#!/bin/bash
+MolecularDynamics
+    TimeStep 0.25
+    Preserve CenterofMass=Yes Momentum=yes AngularMomentum=No
+    Thermostat Type=none
+    InitialVelocities Type=Random Temperature=300 RandomVelocitiesMethod=Exact
+End
+
+System
+    GeometryFile /mnt/workspace/konrad/NaCl_AMS/RETIS_ReaxFF/ams_inp/initial.rkf
+
+    Charge 0.0
+End
+
+Engine ReaxFF
+ForceField CHOCsKNaClIFLi.ff
+EndEngine
+
