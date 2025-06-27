@@ -138,7 +138,11 @@ When we have a converged simulation, we can use [metadynminer](https://github.co
 
 # Step 2: Running InfRETIS
 
-Running infRETIS after the setup is trivial, but requires a couple of environment variables set to make it work in AMS. `NSCM` is the number of cores used per worker, unless `OMP_NUM_THREADS` is set, then `NSCM=1`.
+Running infRETIS after the setup requires:
+1. infretis.toml file (cf. )
+2. load/ folder with a valid trajectory per ensemble (can also just be the same reactive path)
+3. ams_inp folder with the [settings](./examples/NaCl/ams_inp/ams.inp) for ams and an initial [geometry](./examples/NaCl/ams_inp/initial.rkf)
+4. A couple of environment variables: `NSCM` is the number of cores used per worker, unless `OMP_NUM_THREADS` is set, then `NSCM=1`.
 
 ```
 export NSCM=1 # cores used
@@ -159,5 +163,10 @@ export SCM_TMPDIR={Location of temp directory}
 
 
 # Step 3: Analyze the data
-
-- explain inftools, PP, link NaCl paper
+Besides the setup scripts, [inftools](https://github.com/infretis/inftools) also includes many more useful tools, to get the most out of the RETIS simulation.
+You can:
+- Calculate the rate (based on WHAM - publication about the aplication in InfRETIS is coming!)
+- Post calculate parameters to check their predictive power for the reaction outcome 
+  - This can be used to screen a large amount of parameters, to learn about reaction paths and mechanisms, as shown for [NaCl](https://pubs.acs.org/doi/full/10.1021/acs.jctc.5c00054)
+  - The function is soon to be added in inftools
+- Obtain a free energy profile along the order parameter
