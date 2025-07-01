@@ -7,7 +7,7 @@ The following points shall guide your way from an initial structure towards runn
 
 The prerequisites to follow the tutorial are a recent version of AMS2025 or newer, including PLAMS. 
 
-We will guide you step by step using the example of NaCl dissociation in water. This simple test case was chosen to showcase the latest improvements in our approach, which now enables us to extract both rate constants and mechanistic insights from a RETIS simulation (see [J. Chem. Theory Comput. 2023, 19, 7, 2222–2236](https://pubs.acs.org/doi/full/10.1021/acs.jctc.5c00054) for details).
+We will guide you step by step using the example of NaCl dissociation in water. This simple test case was chosen to showcase the latest improvements in our approach, which now enables us to extract both rate constants and mechanistic insights from a RETIS simulation (see [J. Chem. Theory Comput. 2023, 19, 7, 2222–2236](https://pubs.acs.org/doi/full/10.1021/acs.jctc.5c00054) for details). The subfolders include all necessary scripts and files to run the simulations. All other systems can be set up and analyzed in the same way. 
 
 # Step 0: Molecular Dynamics
 
@@ -25,8 +25,8 @@ Their comparison in an overview:
 |           | InfInit                                                                                                                                                  | PLUMED                                                                                                                                       |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
 | Principle | <ul><li> Unbiased MD </li> <li> Multiple short RETIS runs</li> <li> Interfaces are updated at each step based on local crossing probabilities </li></ul> | <ul><li> Biased MD </li> <li> Exploration of free energy surface</li> <li> Interface placement estimated based on energy gradient </li></ul> |
-| Pros      | + Same OP as production run <br> + Precise interface placement <br> + Minimal supervision                                                                | + Included in AMS <br> + Faster, if you know what you are doing <br> + Free energy surface obtained                                          |
-| Cons      | - Separate python environment for InfTools <br> - early stages of development                                                                            | - Interface placement depends on convergence <br> - No python for OP <br> - Large number of RETIS steps to 'forget' the bias                 |
+| Pros      | + Same order parameter as production run <br> + Precise interface placement <br> + Minimal supervision                                                   | + Included in AMS <br> + Faster, if you know what you are doing <br> + Free energy surface obtained                                          |
+| Cons      | - Separate python environment for InfTools <br> - early stages of development                                                                            | - Interface placement depends on convergence <br> - No python for order parameter <br> - Large number of RETIS steps to 'forget' the bias    |
 
 Find examples [here](./setup/)
 
