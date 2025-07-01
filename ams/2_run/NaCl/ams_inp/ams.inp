@@ -7,8 +7,7 @@ MolecularDynamics
 End
 
 System
-    GeometryFile {absolute_path}/ams_inp/initial.rkf
-
+    GeometryFile {absolute_path}/ams_inp/initial.rkf #replace with the actual path
     Charge 0.0
 End
 
