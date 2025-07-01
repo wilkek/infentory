@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --partition={}           # Partition name
-#SBATCH --nodelist={}
+#SBATCH --nodelist={optional}    # Node list (optional)
 #SBATCH --job-name=AMS.WATER_DIMER              # Job name
 #SBATCH --nodes=1                        # Number of nodes
 #SBATCH --ntasks-per-node=2             # Number of workers per node

@@ -7,14 +7,16 @@ The following points shall guide your way from an initial structure towards runn
 
 The prerequisites to follow the tutorial are a recent version of AMS2025 or newer, including PLAMS. 
 
+We will guide you step by step using the example of NaCl dissociation in water. This simple test case was chosen to showcase the latest improvements in our approach, which now enables us to extract both rate constants and mechanistic insights from a RETIS simulation (see [J. Chem. Theory Comput. 2023, 19, 7, 2222–2236](https://pubs.acs.org/doi/full/10.1021/acs.jctc.5c00054) for details).
+
 # Step 0: Molecular Dynamics
 
 The purpose of running MD as a preparation step is not only, to properly equilibrate your system to get an initial configuration to start your simulations from! We also need to learn about our systems state A, to place the first interface λ<sub>A</sub> in the most efficient way. Therefore, we run a long MD run and calculate the order parameter λ along the path. The optimal placement is now roughly, where 20% of the order parameter values are above.
-In the [MD](./MD/) folder you can find the AMS input scripts to run those simulations. In this simple example, you can do this by visualizing the trajectory and use the 'Distance' tool of AMSMovie.
+In the [MD](./MD/) folder you can find the AMS input scripts to run those simulations. In this simple example, you can do this by visualizing the trajectory and use the 'Distance' tool of AMSMovie, but you can also recalculate it with inftools, a package that includes many helper functions for infRETIS. The required toml file is located in [2_explore_A](./0_MD/2_explore_A/).
 
-# Step 1: Finding initial trajectories and interface placement
+# Step 1: Setup - Finding initial trajectories and interface placement
 
-This step is as crucial, as it can be cumbersome. InfRETIS needs at least one path, physical or not, that connects state A and state B. Those paths can be obtained through various methods. Two convenient ones are presented in the following and only require one Geometry and the order parameter description:    
+This step is as crucial, as it can be cumbersome. InfRETIS needs at least one path, physically meaningful or not, that connects state A and state B. Those paths can be obtained through various methods. Two convenient ones are presented in the following and only require one Geometry and the order parameter description:    
   1. InfInit, a tool contained in the [inftools](https://github.com/infretis/inftools) package and InfRETIS native. 
   2. PLUMED, as contained in AMS
 
@@ -26,7 +28,7 @@ Their comparison in an overview:
 | Pros      | + Same OP as production run <br> + Precise interface placement <br> + Minimal supervision                                                                | + Included in AMS <br> + Faster, if you know what you are doing <br> + Free energy surface obtained                                          |
 | Cons      | - Separate python environment for InfTools <br> - early stages of development                                                                            | - Interface placement depends on convergence <br> - No python for OP <br> - Large number of RETIS steps to 'forget' the bias                 |
 
-Find exemplar files [here](./setup/)
+Find examples [here](./setup/)
 
 
 ## InfInit
