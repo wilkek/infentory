@@ -7,7 +7,7 @@ MolecularDynamics
 End
 
 System
-    GeometryFile /mnt/workspace/konrad/NaCl_AMS/infentory_120126/infentory/ams/2_run/NaCl/ams_inp/initial.rkf #replace with the actual path
+    GeometryFile {absolute_path}/ams_inp/initial.rkf #replace with the actual path
     Charge 0.0
 End
 
