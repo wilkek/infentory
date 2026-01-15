@@ -141,7 +141,7 @@ When we have a converged simulation, we can use [metadynminer](https://github.co
 # Step 2: Running InfRETIS
 
 Running infRETIS after the setup requires:
-1. infretis.toml file (cf. )
+1. infretis.toml file: [infinit.toml](./2_run/NaCl/infretis.toml) The key sections are closer explained [here](../chignolin/infretis_settings.md)
 2. load/ folder with a valid trajectory per ensemble (can also just be the same reactive path)
 3. ams_inp folder with the [settings](./2_run/NaCl/ams_inp/ams.inp) for ams and an initial [geometry](./2_run/NaCl/ams_inp/initial.rkf)
 4. A couple of environment variables: `NSCM` is the number of cores used per worker, unless `OMP_NUM_THREADS` is set, then `NSCM=1`.
