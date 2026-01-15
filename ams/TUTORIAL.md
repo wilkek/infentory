@@ -12,7 +12,7 @@ We will guide you step by step using the example of NaCl dissociation in water. 
 # Step 0: Molecular Dynamics
 
 The purpose of running MD as a preparation step is not only, to properly equilibrate your system to get an initial configuration to start your simulations from! We also need to learn about our systems state A, to place the first interface λ<sub>A</sub> in the most efficient way. Therefore, we run a long MD run and calculate the order parameter λ along the path. The optimal placement is now roughly, where 20% of the order parameter values are above.
-In the [MD](./MD/) folder you can find the AMS input scripts to run those simulations. In this simple example, you can do this by visualizing the trajectory and use the 'Distance' tool of AMSMovie, but you can also recalculate it with inftools, a package that includes many helper functions for infRETIS. The required toml file is located in [2_explore_A](./0_MD/2_explore_A/).
+In the [MD](./0_MD/) folder you can find the AMS input scripts to run those simulations. In this simple example, you can do this by visualizing the trajectory and use the 'Distance' tool of AMSMovie, but you can also recalculate it with inftools, a package that includes many helper functions for infRETIS. The required toml file is located in [2_explore_A](./0_MD/2_explore_A/).
 
 # Step 1: Setup - Finding initial trajectories and interface placement
 
@@ -28,7 +28,7 @@ Their comparison in an overview:
 | Pros      | + Same order parameter as production run <br> + Precise interface placement <br> + Minimal supervision                                                   | + Included in AMS <br> + Faster, if you know what you are doing <br> + Free energy surface obtained                                          |
 | Cons      | - Separate python environment for InfTools <br> - early stages of development                                                                            | - Interface placement depends on convergence <br> - No python for order parameter <br> - Large number of RETIS steps to 'forget' the bias    |
 
-Find examples [here](./setup/)
+Find examples [here](./1_setup/)
 
 
 ## InfInit
@@ -96,9 +96,9 @@ Your folder should now contain `amsworker`- and `worker`-directories. If you wan
 </details>
 
 ### Initializing the run
-#### [Prerequisites](./setup/NaCl_infinit/) 
-- ams_inp-folder with the [AMS-engine settings](./setup/NaCl_infinit/ams_inp/ams.inp) and an initial [geometry](./setup/NaCl_infinit/ams_inp/initial.rkf) in rkf format
-- [infinit.toml](./setup/NaCl_infinit/infinit.toml) - the InfRETIS input format. The key sections are closer explained [here](../chignolin/infretis_settings.md)
+#### [Prerequisites](./1_setup/NaCl_infinit) 
+- ams_inp-folder with the [AMS-engine settings](./1_setup/NaCl_infinit/ams_inp/ams.inp) and an initial [geometry](./1_setup/NaCl_infinit/ams_inp/initial.rkf) in rkf format
+- [infinit.toml](./1_setup/NaCl_infinit/infretis.toml_bkp) - the InfRETIS input format. The key sections are closer explained [here](../chignolin/infretis_settings.md)
   
 The key settings, we have to take care of, are defined in the [infinit]-section:
 
@@ -130,11 +130,11 @@ You can start the production run from here!
 ## PLUMED
 <details>
   <summary>Click to expand</summary>
-The exemplar input script is given [here](./setup/NaCl_metaD/).
+The exemplar input script is given [here](./1_setup/NaCl_plumed/).
 
 For detailed explanation on how to use PLUMED, check out the [AMS Documentation](https://www.scm.com/doc/plams/examples/AMSPlumedMD/AMSPlumedMD.html) and the [PLUMED website](https://www.plumed.org/).
 
-When we have a converged simulation, we can use [metadynminer](https://github.com/spiwokv/metadynminer) to plot the free energy surface and place the interfaces. A [python script](./setup/NaCl_metaD/get_energy_profile.py) for that can be found in the respective folder.
+When we have a converged simulation, we can use [metadynminer](https://github.com/spiwokv/metadynminer) to plot the free energy surface and place the interfaces. A [python script](./1_setup/NaCl_plumed/get_energy_profile.py) for that can be found in the respective folder.
 
 </details>
 
@@ -143,7 +143,7 @@ When we have a converged simulation, we can use [metadynminer](https://github.co
 Running infRETIS after the setup requires:
 1. infretis.toml file (cf. )
 2. load/ folder with a valid trajectory per ensemble (can also just be the same reactive path)
-3. ams_inp folder with the [settings](./examples/NaCl/ams_inp/ams.inp) for ams and an initial [geometry](./examples/NaCl/ams_inp/initial.rkf)
+3. ams_inp folder with the [settings](./2_run/NaCl/ams_inp/ams.inp) for ams and an initial [geometry](./2_run/NaCl/ams_inp/initial.rkf)
 4. A couple of environment variables: `NSCM` is the number of cores used per worker, unless `OMP_NUM_THREADS` is set, then `NSCM=1`.
 
 ```
