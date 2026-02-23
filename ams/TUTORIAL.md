@@ -48,6 +48,7 @@ Download and install mamba with the following commands (if you don't already hav
 curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
+
 Press enter and type yes every time when prompted. 
 You should see `(base)` in the left of your terminal window after reopening if everything went successfully.
 
